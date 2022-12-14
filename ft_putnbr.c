@@ -6,14 +6,15 @@
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:40:29 by ltranca-          #+#    #+#             */
-/*   Updated: 2022/12/12 19:14:24 by ltranca-         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:01:26 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putnbr(long long int n, int plus, int ret)
+int ft_putnbr(long long int n, int plus, int iter, int ret)
 {
+    iter++;
     if (plus >= 1)
     {
         if (n > 0)
@@ -30,7 +31,7 @@ int ft_putnbr(long long int n, int plus, int ret)
 		ft_putstr("-2147483648");
 		return (11);
 	}
-    if (ret < ft_intlen(n))
+    if (iter == 0)
         ret = ft_intlen(n);
 	if (n < 0)
 	{
@@ -40,7 +41,7 @@ int ft_putnbr(long long int n, int plus, int ret)
 	}
 	if (n >= 10)
 	{
-		ft_putnbr(n / 10, 0, ret);
+		ft_putnbr(n / 10, 0, iter, ret);
 		n = n % 10;
 	}
 	if (n < 10)
