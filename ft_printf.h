@@ -22,7 +22,7 @@ int	    ft_intlen(long long int n);
 int     ft_putnbr(long long int n, int plus, int iter, int ret);
 int     ft_putstr(char *s);
 int     ft_printf(const char *args, ...);
-int     ft_puthex(unsigned long n, char may)
+int     ft_puthex(unsigned long n, char may);
 int	    ft_hexlen(long long int n);
 
 #endif
