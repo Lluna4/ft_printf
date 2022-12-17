@@ -31,12 +31,19 @@ static int flags(va_list pointer, char *args, int plus)
         ft_putchar((char)va_arg(pointer, int));
         ret++;
     }
+    if (*args == 'p')
+    {
+        ret += ft_putstr("0x");
+        ret += ft_puthex((unsigned long)va_arg(pointer, void *), 0);
+    }
     if (*args == 's')
         ret += ft_putstr(va_arg(pointer, char *));
     if (*args == 'i' || *args == 'd')
         ret += ft_putnbr((int)va_arg(pointer, int), plus, -1, 0);
     if (*args == 'u')
         ret += ft_putnbr((unsigned int)va_arg(pointer, unsigned int), plus, -1, 0);
+    if (*args == 'x' || *args == 'X')
+        ret += ft_puthex(va_arg(pointer, unsigned int), *args - 'x');
     if (*args == '%')
         ret += ft_putchar('%');
     return (ret);

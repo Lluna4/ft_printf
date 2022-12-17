@@ -31,8 +31,7 @@ int ft_putnbr(long long int n, int plus, int iter, int ret)
 		ft_putstr("-2147483648");
 		return (11);
 	}
-    if (iter == 0)
-        ret = ft_intlen(n);
+    ret = ft_intlen(n);
 	if (n < 0)
 	{
         ft_putchar('-');
