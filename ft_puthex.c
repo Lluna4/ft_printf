@@ -1,11 +1,11 @@
 #include "ft_printf.h"
 
-int ft_puthex(unsigned long n, int may)
+int ft_puthex(unsigned long n, char may)
 {
     int ret;
     int sum;
 
-    if (may == 32)
+    if (may == 'X')
         sum = 55;
     else
         sum = 87;

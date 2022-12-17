@@ -91,14 +91,14 @@ int ft_puthex(unsigned long n, int may)
     int ret;
     int sum;
 
-    if (may == 32)
+    if (may == 'X')
         sum = 55;
     else
         sum = 87;
     ret = ft_hexlen(n);
     if (n >= 15)
     {
-        ft_puthex(n / 16, sum);
+        ft_puthex(n / 16, may);
         n = n % 16;
     }
     if (n > 9)
@@ -140,7 +140,7 @@ static int flags(va_list pointer, char *args, int plus)
     if (*args == 'u')
         ret += ft_putnbr((unsigned int)va_arg(pointer, unsigned int), plus, -1, 0);
     if (*args == 'x' || *args == 'X')
-        ret += ft_puthex(va_arg(pointer, unsigned int), 'x' - *args);
+        ret += ft_puthex(va_arg(pointer, unsigned int), *args);
     if (*args == '%')
         ret += ft_putchar('%');
     return (ret);
@@ -179,6 +179,6 @@ int main(void)
 {
     int vo;
     vo = 2172162;
-    ft_printf("%x", 12812);
-    printf("\n%x", 12812);
+    ft_printf("puntero: %p hex:%x hex maj:%X", &vo, &vo, &vo);
+    printf("\npuntero: %p hex:%x hex maj:%X", &vo, &vo, &vo);
 }

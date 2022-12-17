@@ -43,7 +43,7 @@ static int flags(va_list pointer, char *args, int plus)
     if (*args == 'u')
         ret += ft_putnbr((unsigned int)va_arg(pointer, unsigned int), plus, -1, 0);
     if (*args == 'x' || *args == 'X')
-        ret += ft_puthex(va_arg(pointer, unsigned int), *args - 'x');
+        ret += ft_puthex(va_arg(pointer, unsigned int), *args);
     if (*args == '%')
         ret += ft_putchar('%');
     return (ret);
