@@ -6,13 +6,13 @@
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:35:25 by ltranca-          #+#    #+#             */
-/*   Updated: 2022/12/14 17:02:25 by ltranca-         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:26:29 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int flags(va_list pointer, char *args, int plus)
+static int flags(va_list pointer, char *args, int p)
 {
     int ret;
 
@@ -22,9 +22,9 @@ static int flags(va_list pointer, char *args, int plus)
     {
         args++;
         if (*args == '+')
-            plus = 1;
+            p = 1;
         else
-            plus = 2;
+            p = 2;
     }  
     if (*args == 'c')
     {
@@ -34,16 +34,16 @@ static int flags(va_list pointer, char *args, int plus)
     if (*args == 'p')
     {
         ret += ft_putstr("0x");
-        ret += ft_puthex((unsigned long)va_arg(pointer, void *), 0);
+        ret += ft_puthex((unsigned long)va_arg(pointer, void *), 'x', 0);
     }
     if (*args == 's')
         ret += ft_putstr(va_arg(pointer, char *));
     if (*args == 'i' || *args == 'd')
-        ret += ft_putnbr((int)va_arg(pointer, int), plus, -1, 0);
+        ret += ft_putnbr((int)va_arg(pointer, int), p, -1, 0);
     if (*args == 'u')
-        ret += ft_putnbr((unsigned int)va_arg(pointer, unsigned int), plus, -1, 0);
+        ret += ft_putnbr((unsigned int)va_arg(pointer, unsigned int), p, -1, 0);
     if (*args == 'x' || *args == 'X')
-        ret += ft_puthex(va_arg(pointer, unsigned int), *args);
+        ret += ft_puthex(va_arg(pointer, unsigned int), *args, 0);
     if (*args == '%')
         ret += ft_putchar('%');
     return (ret);

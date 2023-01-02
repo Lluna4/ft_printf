@@ -6,7 +6,7 @@
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:39:26 by ltranca-          #+#    #+#             */
-/*   Updated: 2022/12/12 19:00:18 by ltranca-         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:37:15 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_intlen(long long int n)
 	int	ret;
 
 	ret = 1;
+	if (n < 0)
+		n = n * -1;
 	while (n >= 10)
 	{
 		ret++;
