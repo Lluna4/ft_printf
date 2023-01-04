@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 16:40:29 by ltranca-          #+#    #+#             */
-/*   Updated: 2023/01/04 16:32:09 by ltranca-         ###   ########.fr       */
+/*   Created: 2023/01/04 15:58:38 by ltranca-          #+#    #+#             */
+/*   Updated: 2023/01/04 16:14:54 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long long int n, int iter, int ret)
+int	ft_putptr(unsigned long long n, char may, int iter)
 {
-	iter++;
-	if (n == -2147483648)
-		return (ft_putstr("-2147483648"));
-	if (iter == 0)
-		ret = ft_intlen(n);
-	if (n < 0)
+	int	ret;
+	int	sum;
+
+	if (ft_putstr("0x") == -1)
+		return (-1);
+	if (may == 'X')
+		sum = 55;
+	else
+		sum = 87;
+	ret = ft_hexlen(n);
+	if (n >= 16)
 	{
-		if (ft_putchar('-') == -1)
+		if (ft_puthex(n / 16, may, iter++) == -1)
 			return (-1);
-		n = n * -1;
-		ret++;
+		n = n % 16;
 	}
-	if (n >= 10)
-	{
-		if (ft_putnbr(n / 10, iter, ret) == -1)
+	if (n == 0 && iter == 0)
+		return (ft_putchar('0'));
+	if (n > 9)
+		if (ft_putchar(n + sum) == -1)
 			return (-1);
-		n = n % 10;
-	}
-	if (n < 10)
+	if (n <= 9)
 		if (ft_putchar(n + '0') == -1)
 			return (-1);
 	return (ret);

@@ -6,24 +6,25 @@
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:40:23 by ltranca-          #+#    #+#             */
-/*   Updated: 2022/12/12 17:33:25 by ltranca-         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:13:52 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
-    int ret;
+	int	ret;
 
-    ret = 0;
-    if (!s)
-        s = "(null)";
-    while (*s)
-    {
-        ret++;
-        ft_putchar(*s);
-        s++;
-    }
-    return (ret);
+	ret = 0;
+	if (!s)
+		s = "(null)";
+	while (*s)
+	{
+		ret++;
+		if (ft_putchar(*s) == -1)
+			return (-1);
+		s++;
+	}
+	return (ret);
 }

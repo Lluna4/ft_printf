@@ -6,15 +6,15 @@
 /*   By: ltranca- <ltranca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:40:16 by ltranca-          #+#    #+#             */
-/*   Updated: 2022/12/12 16:51:30 by ltranca-         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:18:04 by ltranca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int    ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	if (write(1, &c, 1) != 1)
 		return (-1);
-    return(1);
+	return (1);
 }

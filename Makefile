@@ -10,11 +10,14 @@ ft_putstr.c \
 ft_putnbr.c \
 ft_printf.c \
 ft_hexlen.c \
-ft_puthex.c 
+ft_puthex.c \
+ft_putptr.c
 
 
 OBJ = ${SRC:.c=.o} 
 
+%.o: %.c $(HEADER)
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): ${OBJ} ${HEADER}
 	ar -rcs $(NAME) ${OBJ}
